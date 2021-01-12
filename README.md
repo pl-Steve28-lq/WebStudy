@@ -2,11 +2,18 @@
 웹으로 이상한거 만들어보고 싶다
 
 ## Canvas
-### [BouncingString](/Canvas/BouncingString) \([결과물](https://TestWeb2.holiday28784.repl.co)\)
+### [BouncingString](/Canvas/BouncingString)
 *HTML의 Canvas 를 처음으로 써본 마우스로 줄 튕기기 구현*<br>
 [이 동영상](https://www.youtube.com/watch?v=dXhAQbE8iBg)에서 기능, 간단한 베이스를 얻었습니다.<br>
 동영상에서 튕기는 부분을 어떻게 구현하셨는지 잘 못찾겠어서 그 부분은 제가 다시 짰습니다.<br>
 베이즈 곡선, 내분과 외분, sinc 함수 등 수학을 많이 썼습니다. ㄹㅇㅋㅋ
+
+### [BouncingString2](/Canvas/BouncingString2) \([결과물](https://TestWeb2.holiday28784.repl.co)\)
+*BouncingString 업그레이드*<br>
+어제 만든 것을 업그레이드 시켜서, 세팅 없이 캔버스만으로 할 수 있게<br>
+BouncingStringManager 클래스로 App.js 와의 종속성을 없앴습니다!!<br>
+
+
 
 ## ThreeJS
 ### [PlanetOrbit](/ThreeJS/PlanetOrbit)
