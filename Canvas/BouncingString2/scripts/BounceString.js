@@ -38,8 +38,8 @@ export class BounceString {
       ctx.moveTo(this.p1.x, this.p1.y)
       ctx.quadraticCurveTo(posX, posY, this.p2.x, this.p2.y)
     }
-    else if (this.t < 40) {
-      let coef = Math.sin(this.sp*Math.PI*this.t)/Math.pow(this.t, 1.2)
+    else if (this.t < 50) {
+      let coef = Math.sin(this.sp*Math.PI*this.t)/Math.pow(this.t, 1.5)
       let oldX = this.pos.x
       let oldY = this.pos.y
       let X = (this.p1.x + this.p2.x)/2

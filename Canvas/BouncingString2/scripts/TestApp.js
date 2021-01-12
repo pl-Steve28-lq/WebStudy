@@ -18,8 +18,8 @@ export class TestApp {
   }
 
   resize() {
-    this.Width = window.innerWidth
-    this.Height = window.innerHeight
+    this.Width = document.body.clientWidth
+    this.Height = document.body.clientHeight
 
     this.canvas.width = this.Width * this.pixelRatio
     this.canvas.height = this.Height * this.pixelRatio
@@ -32,15 +32,21 @@ export class TestApp {
 
 window.onload = () => {
   const v = new TestApp()
-  for (let i = 0; i < 20; i++) {
-    let j = i > 9 ? 20 - i : i
-    let r = Math.random()*256 | 0
-    let g = Math.random()*256 | 0
-    let b = Math.random()*256 | 0
+
+  let interval = 30
+  let wlen = (v.Width - 100)/interval
+  let hlen = v.Height
+  let offset = 64
+
+  for (let i = 0; i < wlen; i++) {
+    let j = i%20 > 9 ? 20 - i%20 : i%20
+    let r = offset + Math.random()*(256 - offset) | 0
+    let g = offset + Math.random()*(256 - offset) | 0
+    let b = offset + Math.random()*(256 - offset) | 0
     v.manager.add({
       pos: {
-        x1: 100 + 15*i, y1: 50,
-        x2: 100 + 15*i, y2: 100 + 15*j
+        x1: 50 + interval*i, y1: 10,
+        x2: 50 + interval*i, y2: hlen-10
       },
       color: "rgb(" + r + "," + g + "," + b + ")"
     })
