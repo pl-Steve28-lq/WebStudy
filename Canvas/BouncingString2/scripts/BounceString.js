@@ -29,7 +29,16 @@ export class BounceString {
       posX, posY, this.r
     )
 
-    if (inside && click) {
+    const touch = inCircle(
+      this.p1.x, this.p1.y,
+      this.p2.x, this.p2.y,
+      posX, posY, 30
+    )
+
+    if (touch) this.touching = true
+    if (!click) this.touching = false
+
+    if (inside && this.touching) {
       this.t = 0.73
       this.pos = {
         x: posX,

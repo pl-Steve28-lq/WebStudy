@@ -48,7 +48,8 @@ window.onload = () => {
         x1: 50 + interval*i, y1: 10,
         x2: 50 + interval*i, y2: hlen-10
       },
-      color: "rgb(" + r + "," + g + "," + b + ")"
+      color: "rgb(" + r + "," + g + "," + b + ")",
+      radius: 100
     })
   }
 }
