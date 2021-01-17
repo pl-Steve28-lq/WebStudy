@@ -1,7 +1,7 @@
-import { inCircle } from './utils.js'
+import { inCircle } from './utils/Utils.js'
 
 export class BounceString {
-  constructor(x1, y1, x2, y2, r, sp, clr) {
+  constructor(x1, y1, x2, y2, r, sp, clr, onbounce) {
     this.sp = sp
     this.p1 = {
       x: x1,
@@ -18,6 +18,8 @@ export class BounceString {
       y: 0
     }
     this.clr = clr
+    this.onBounceBehavior = onbounce
+    this.bouncing = false
   }
 
   animate(ctx, posX, posY, click) {
@@ -46,8 +48,11 @@ export class BounceString {
       }
       ctx.moveTo(this.p1.x, this.p1.y)
       ctx.quadraticCurveTo(posX, posY, this.p2.x, this.p2.y)
+      this.bouncing = true
     }
     else if (this.t < 50) {
+      this.bouncing ? this.onBounceBehavior() : null
+      this.bouncing = false
       let coef = Math.sin(this.sp*Math.PI*this.t)/Math.pow(this.t, 1.5)
       let oldX = this.pos.x
       let oldY = this.pos.y
