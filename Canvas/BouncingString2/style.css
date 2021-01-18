@@ -17,4 +17,6 @@ body {
   height: 100%;
   background-color: black;
   position: relative;
+  overflow-x:hidden;
+  overflow-y:hidden;
 }
