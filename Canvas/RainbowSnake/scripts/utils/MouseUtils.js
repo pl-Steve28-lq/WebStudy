@@ -62,8 +62,8 @@ export class MouseManager {
     this.onMoveBehavior(this.pos)
   }
 
-  onDown(e) { 
-    if (e.button == 0) {
+  onDown(e) {
+    if ((e.button == 0) || !e.button) {
       this.isClicked = true
       this.onClickBehavior(this.pos)
     }
@@ -95,7 +95,7 @@ export class MouseManager {
   }
 
   scrollEventListener() {
-    let touchPoint
+    let touchPoint = { x: 0, y: 0 }
 
     let touchStartHandler = e => {
       touchPoint = this.getEventPos(e)
@@ -103,11 +103,6 @@ export class MouseManager {
 
     let touchMoveHandler = e => {
       let newPoint
-
-      if (false) {
-        touchPoint = null
-        return
-      }
 
       if (this.isClicked) {
         newPoint = this.getEventPos(e)
@@ -119,8 +114,8 @@ export class MouseManager {
         
         let slope = (newY-oldY)/((newX-oldX) == 0 ? 0.1 : (newX-oldX))
         let range = 0.5
-        let xslope = Math.abs(slope) < 0.5
-        let yslope = Math.abs(slope) > 2
+        let xslope = Math.abs(slope) < range
+        let yslope = Math.abs(slope) > 1/range
 
         if ((newX < oldX) && xslope) this.onLeftSwipeBehavior()
         if ((newX > oldX) && xslope) this.onRightSwipeBehavior()
@@ -129,7 +124,7 @@ export class MouseManager {
         if ((newY > oldY) && !this.refreshable) e.preventDefault()
       }
 
-      touchPoint = newPoint;
+      touchPoint = newPoint
     }
 
     document.addEventListener(
