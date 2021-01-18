@@ -13,6 +13,11 @@
 어제 만든 것을 업그레이드 시켜서, 세팅 없이 캔버스만으로 할 수 있게<br>
 BouncingStringManager 클래스로 App.js 와의 종속성을 없앴습니다!!<br>
 
+### [RainbowSnake](/Canvas/RainbowSnake) \([결과물](https://AwesomeCanvas.holiday28784.repl.co)\)
+*개쩌는 MouseUtils!!*<br>
+BouncingString2 에서 만든 MouseUtils 를 조금 활용해서 만들었습니다<br>
+Canvas 개꿀잼 <br>
+
 
 
 ## ThreeJS
