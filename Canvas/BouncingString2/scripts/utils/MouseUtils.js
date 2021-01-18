@@ -102,11 +102,8 @@ export class MouseManager {
         if ((newX < oldX) && xslope) this.onLeftSwipeBehavior()
         if ((newX > oldX) && xslope) this.onRightSwipeBehavior()
         if ((newY < oldY) && yslope) this.onUpSwipeBehavior()
-        if ((newY > oldY) && yslope) {
-          this.onDownSwipeBehavior()
-          this.refreshable && this.isMobile ?
-            null : e.preventDefault()
-        }
+        if ((newY > oldY) && yslope) this.onDownSwipeBehavior()
+        if ((newY > oldY) && !this.refreshable) e.preventDefault()
       }
 
       touchPoint = newPoint;
