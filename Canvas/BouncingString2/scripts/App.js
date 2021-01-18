@@ -1,43 +1,20 @@
+import { BaseCanvasApp } from './BaseApp.js'
 import { BouncingStringManager } from './BouncingString.js'
 import { Guitar } from './utils/SoundUtils.js'
 
-if (location.protocol !== "https:") location.protocol = "https:"
+class App extends BaseCanvasApp {
+  constructor() { super() }
 
-export class App {
-  constructor() {
-    this.canvas = document.createElement('canvas')
-    document.body.appendChild(this.canvas)
-    this.ctx = this.canvas.getContext('2d')
-
-    this.manager = new BouncingStringManager(this.canvas)
+  init() {
+    this.manager = this.check(
+      this.manager, BouncingStringManager,
+      this.canvas
+    )
     this.manager.mouse.setRefreshable(false)
-
-    this.pixelRatio = window.devicePixelRatio > 1 ? 2 : 1
-    console.log(this.pixelRatio)
-    window.addEventListener(
-      'resize',
-      this.resize.bind(this),
-      false
+    
+    this.guitar = this.check(
+      this.guitar, Guitar
     )
-    this.resize()
-  }
-
-  resize() {
-    this.Width = document.body.clientWidth
-    this.Height = document.body.clientHeight
-
-    this.canvas.width = this.Width * this.pixelRatio
-    this.canvas.height = this.Height * this.pixelRatio
-    this.ctx.scale(
-      this.pixelRatio,
-      this.pixelRatio
-    )
-
-    this.init()
-  }
-
-  init(guitar) {
-    this.guitar = guitar || this.guitar
     this.manager.strings = []
 
     let wlen = this.Width
@@ -67,7 +44,4 @@ export class App {
 
 window.onload = () => {
   const v = new App()
-  const guitar = new Guitar()
-
-  v.init(guitar)
 }

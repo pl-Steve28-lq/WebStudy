@@ -34,7 +34,7 @@ export class BounceString {
     const touch = inCircle(
       this.p1.x, this.p1.y,
       this.p2.x, this.p2.y,
-      posX, posY, 30
+      posX, posY, 10
     )
 
     if (touch) this.touching = true
